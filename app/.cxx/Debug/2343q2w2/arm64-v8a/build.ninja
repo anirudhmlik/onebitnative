@@ -52,7 +52,7 @@ build cmake_object_order_depends_target_onebit: phony || cmake_object_order_depe
 build CMakeFiles/onebit.dir/onebit_jni.cpp.o: CXX_COMPILER__onebit_Debug /Users/anirudhmalik/Desktop/onebit/OneBitNative/app/src/main/cpp/onebit_jni.cpp || cmake_object_order_depends_target_onebit
   DEFINES = -Donebit_EXPORTS
   DEP_FILE = CMakeFiles/onebit.dir/onebit_jni.cpp.o.d
-  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -fno-limit-debug-info  -fPIC -O3 -DNDEBUG -march=armv8.2-a+dotprod -std=c++17
+  FLAGS = -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -fno-limit-debug-info  -fPIC -O3 -DNDEBUG -std=c++17
   INCLUDES = -I/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/include -I/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include -I/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/src/. -I/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/src/../include -I/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/src/../include -I/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/src/../../../../include
   OBJECT_DIR = CMakeFiles/onebit.dir
   OBJECT_FILE_DIR = CMakeFiles/onebit.dir

@@ -92,6 +92,9 @@ Java_ai_onebit_nativeapp_OneBitNativeBridge_loadModel(JNIEnv * env, jclass, jstr
     cparams.n_ctx = (uint32_t) nCtx;
     cparams.n_threads = (int32_t) nThreads;
     cparams.n_threads_batch = (int32_t) nThreads;
+    cparams.flash_attn = true; // Use Flash Attention for O(N) memory scaling
+    cparams.type_k = GGML_TYPE_Q8_0; // 8-bit KV cache keys for light memory footprint
+    cparams.type_v = GGML_TYPE_Q8_0; // 8-bit KV cache values
 
     g_ctx = llama_new_context_with_model(g_model, cparams);
     if (!g_ctx) {

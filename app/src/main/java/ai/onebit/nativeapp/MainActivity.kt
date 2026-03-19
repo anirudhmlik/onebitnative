@@ -77,7 +77,7 @@ class MainActivity : ComponentActivity() {
       }
       withContext(Dispatchers.Default) {
         OneBitNativeBridge.initBackend()
-        OneBitNativeBridge.loadModel(dest.absolutePath, /*nCtx=*/2048, /*nThreads=*/4)
+        OneBitNativeBridge.loadModel(dest.absolutePath, /*nCtx=*/2048, /*nThreads=*/8)
       }
     }
   }
@@ -120,7 +120,7 @@ private fun OneBitRoot(
       withContext(Dispatchers.Default) {
         try {
           OneBitNativeBridge.initBackend()
-          OneBitNativeBridge.loadModel(path, 2048, 4)
+          OneBitNativeBridge.loadModel(path, 2048, 8)
           status = "BitNet Model Loaded"
         } catch (e: Exception) {
           status = "Failed to load model: ${e.message}"
