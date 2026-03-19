@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "/Users/anirudhmalik/.gradle/daemon/8.13/ai.onebit.nativeapp-debug-48:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/Users/anirudhmalik/.gradle/daemon/8.13/ai.onebit.nativeapp-main-50:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/anirudhmalik/.gradle/daemon/8.13/ai.onebit.nativeapp-debug-48:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/anirudhmalik/.gradle/daemon/8.13/ai.onebit.nativeapp-main-50:/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/anirudhmalik/.gradle/daemon/8.13/ai.onebit.nativeapp-debug-48:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "/Users/anirudhmalik/.gradle/daemon/8.13/ai.onebit.nativeapp-main-50:/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/anirudhmalik/.gradle/daemon/8.13/ai.onebit.nativeapp-debug-48:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/Users/anirudhmalik/.gradle/daemon/8.13/ai.onebit.nativeapp-main-50:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/anirudhmalik/.gradle/daemon/8.13/ai.onebit.nativeapp-debug-48:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/anirudhmalik/.gradle/daemon/8.13/ai.onebit.nativeapp-main-50:/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/anirudhmalik/.gradle/daemon/8.13/ai.onebit.nativeapp-debug-48:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/anirudhmalik/.gradle/daemon/8.13/ai.onebit.nativeapp-main-50:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/anirudhmalik/.gradle/daemon/8.13/ai.onebit.nativeapp-debug-48:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "/Users/anirudhmalik/.gradle/daemon/8.13/ai.onebit.nativeapp-main-50:/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "ai.onebit.nativeapp-debug-48:/drawable_logo.png.flat",
+        "source": "ai.onebit.nativeapp-main-50:/drawable/logo.png"
+    },
+    {
+        "merged": "/Users/anirudhmalik/.gradle/daemon/8.13/ai.onebit.nativeapp-debug-48:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/anirudhmalik/.gradle/daemon/8.13/ai.onebit.nativeapp-main-50:/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/anirudhmalik/.gradle/daemon/8.13/ai.onebit.nativeapp-debug-48:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/Users/anirudhmalik/.gradle/daemon/8.13/ai.onebit.nativeapp-main-50:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/anirudhmalik/.gradle/daemon/8.13/ai.onebit.nativeapp-debug-48:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/Users/anirudhmalik/.gradle/daemon/8.13/ai.onebit.nativeapp-main-50:/mipmap-hdpi/ic_launcher.png"
+    }
+]

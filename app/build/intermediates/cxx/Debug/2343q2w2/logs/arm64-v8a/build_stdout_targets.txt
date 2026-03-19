@@ -1,0 +1,2 @@
+ninja: Entering directory `/Users/anirudhmalik/Desktop/onebit/OneBitNative/app/.cxx/Debug/2343q2w2/arm64-v8a'
+ninja: no work to do.

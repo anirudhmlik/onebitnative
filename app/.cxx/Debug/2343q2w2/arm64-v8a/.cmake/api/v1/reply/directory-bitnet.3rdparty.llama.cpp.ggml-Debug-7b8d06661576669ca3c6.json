@@ -1,0 +1,107 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 246,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 249,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"/Users/anirudhmalik/Desktop/onebit/OneBitNative/app/build/intermediates/cxx/Debug/2343q2w2/obj/arm64-v8a/libggml.so"
+			],
+			"targetId" : "ggml::@6da7e328e74d0366642d",
+			"targetIndex" : 2,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "include",
+			"paths" : 
+			[
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include/ggml.h",
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include/ggml-alloc.h",
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include/ggml-backend.h",
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include/ggml-blas.h",
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include/ggml-cann.h",
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include/ggml-cuda.h",
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include/ggml.h",
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include/ggml-kompute.h",
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include/ggml-metal.h",
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include/ggml-rpc.h",
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include/ggml-sycl.h",
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include/ggml-vulkan.h",
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include/ggml-bitnet.h"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"/Users/anirudhmalik/Desktop/onebit/OneBitNative/app/build/intermediates/cxx/Debug/2343q2w2/obj/arm64-v8a/libggml.so"
+			],
+			"targetId" : "ggml::@6da7e328e74d0366642d",
+			"targetIndex" : 2,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include",
+			"paths" : 
+			[
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include/ggml.h",
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include/ggml-alloc.h",
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include/ggml-backend.h",
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include/ggml-blas.h",
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include/ggml-cann.h",
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include/ggml-cuda.h",
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include/ggml.h",
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include/ggml-kompute.h",
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include/ggml-metal.h",
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include/ggml-rpc.h",
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include/ggml-sycl.h",
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include/ggml-vulkan.h",
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/include/ggml-bitnet.h"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "bitnet/3rdparty/llama.cpp/ggml",
+		"source" : "/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml"
+	}
+}

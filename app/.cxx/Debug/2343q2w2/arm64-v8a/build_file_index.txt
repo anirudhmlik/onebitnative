@@ -1,0 +1,9 @@
+/Users/anirudhmalik/Desktop/onebit/OneBitNative/app/src/main/cpp/CMakeLists.txt
+/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/CMakeLists.txt
+/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/common/CMakeLists.txt
+/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/examples/CMakeLists.txt
+/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/CMakeLists.txt
+/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/ggml/src/CMakeLists.txt
+/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/src/CMakeLists.txt
+/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/CMakeLists.txt
+/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/src/CMakeLists.txt

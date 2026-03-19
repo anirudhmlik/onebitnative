@@ -1,0 +1,23 @@
+# ninja log v5
+0	98	1773914688825417318	CMakeFiles/onebit.dir/onebit_jni.cpp.o	766c1093ea8decfa
+0	134	1773914688863351771	bitnet/3rdparty/llama.cpp/ggml/src/CMakeFiles/ggml.dir/ggml-alloc.c.o	d1a853c0e0fc567e
+1	255	1773914688980575871	bitnet/3rdparty/llama.cpp/ggml/src/CMakeFiles/ggml.dir/ggml-aarch64.c.o	de5bdba15174ece4
+1	488	1773914689213322555	bitnet/3rdparty/llama.cpp/ggml/src/CMakeFiles/ggml.dir/llamafile/sgemm.cpp.o	b20f45147e624d51
+0	784	1773914689507514146	bitnet/3rdparty/llama.cpp/ggml/src/CMakeFiles/ggml.dir/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/src/ggml-bitnet-mad.cpp.o	cdfa26b9b9e05bd4
+1	917	1773914689644206331	bitnet/3rdparty/llama.cpp/ggml/src/CMakeFiles/ggml.dir/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/src/ggml-bitnet-lut.cpp.o	2630132600675b27
+0	970	1773914689693132921	bitnet/3rdparty/llama.cpp/ggml/src/CMakeFiles/ggml.dir/ggml-backend.cpp.o	c55e3839bd0ae2e2
+0	1079	1773914689803657879	bitnet/3rdparty/llama.cpp/ggml/src/CMakeFiles/ggml.dir/ggml-quants.c.o	210228699138af6a
+0	1371	1773914690082678548	bitnet/3rdparty/llama.cpp/ggml/src/CMakeFiles/ggml.dir/ggml.c.o	d446be1d6e3e44cf
+1371	1475	1773914690190769318	/Users/anirudhmalik/Desktop/onebit/OneBitNative/app/build/intermediates/cxx/Debug/2343q2w2/obj/arm64-v8a/libggml.so	bcce684c956f8b2d
+134	1631	1773914690344169355	bitnet/3rdparty/llama.cpp/src/CMakeFiles/llama.dir/llama-grammar.cpp.o	fa9752669b311a92
+98	1725	1773914690429303135	bitnet/3rdparty/llama.cpp/src/CMakeFiles/llama.dir/llama-vocab.cpp.o	738b3e925c74be2f
+255	1736	1773914690450292817	bitnet/3rdparty/llama.cpp/src/CMakeFiles/llama.dir/llama-sampling.cpp.o	bbc2cde31446496f
+785	1859	1773914690584433938	bitnet/3rdparty/llama.cpp/src/CMakeFiles/llama.dir/unicode-data.cpp.o	58da47c40f5e2259
+489	2779	1773914691467612092	bitnet/3rdparty/llama.cpp/src/CMakeFiles/llama.dir/unicode.cpp.o	1f6659a4dff9a3a6
+1	4913	1773914693566749827	bitnet/3rdparty/llama.cpp/src/CMakeFiles/llama.dir/llama.cpp.o	d26e93af855bdb3c
+4913	5005	1773914693707095835	/Users/anirudhmalik/Desktop/onebit/OneBitNative/app/build/intermediates/cxx/Debug/2343q2w2/obj/arm64-v8a/libllama.so	e29eb3db86e47276
+5005	5050	1773914693780796807	/Users/anirudhmalik/Desktop/onebit/OneBitNative/app/build/intermediates/cxx/Debug/2343q2w2/obj/arm64-v8a/libonebit.so	3598c0632ca34044
+3	1645	1773914757128021332	CMakeFiles/onebit.dir/onebit_jni.cpp.o	766c1093ea8decfa
+1645	1957	1773914757445569543	/Users/anirudhmalik/Desktop/onebit/OneBitNative/app/build/intermediates/cxx/Debug/2343q2w2/obj/arm64-v8a/libonebit.so	3598c0632ca34044
+52	1862	1773916325423279302	CMakeFiles/onebit.dir/onebit_jni.cpp.o	766c1093ea8decfa
+1862	2142	1773916325710263437	/Users/anirudhmalik/Desktop/onebit/OneBitNative/app/build/intermediates/cxx/Debug/2343q2w2/obj/arm64-v8a/libonebit.so	3598c0632ca34044

@@ -1,0 +1,6 @@
+fatal: not a git repository: /Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/../../.git/modules/3rdparty/llama.cpp
+fatal: not a git repository: /Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/../../.git/modules/3rdparty/llama.cpp
+CMake Warning at /Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/3rdparty/llama.cpp/common/CMakeLists.txt:26 (message):
+  Git index not found in git repository.
+
+

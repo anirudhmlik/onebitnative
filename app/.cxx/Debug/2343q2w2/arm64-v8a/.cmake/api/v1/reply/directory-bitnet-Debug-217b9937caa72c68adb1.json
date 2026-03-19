@@ -1,0 +1,72 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"install"
+		],
+		"files" : 
+		[
+			"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 73,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 78,
+				"parent" : 0
+			}
+		]
+	},
+	"installers" : 
+	[
+		{
+			"backtrace" : 1,
+			"component" : "Unspecified",
+			"destination" : "lib/cmake/Llama",
+			"paths" : 
+			[
+				"/Users/anirudhmalik/Desktop/onebit/OneBitNative/app/.cxx/Debug/2343q2w2/arm64-v8a/bitnet/LlamaConfig.cmake",
+				"/Users/anirudhmalik/Desktop/onebit/OneBitNative/app/.cxx/Debug/2343q2w2/arm64-v8a/bitnet/LlamaConfigVersion.cmake"
+			],
+			"type" : "file"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "lib",
+			"paths" : 
+			[
+				"/Users/anirudhmalik/Desktop/onebit/OneBitNative/app/build/intermediates/cxx/Debug/2343q2w2/obj/arm64-v8a/libllama.so"
+			],
+			"targetId" : "llama::@c0315c61145a6795acc4",
+			"targetIndex" : 3,
+			"type" : "target"
+		},
+		{
+			"backtrace" : 2,
+			"component" : "Unspecified",
+			"destination" : "include",
+			"paths" : 
+			[
+				"/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet/llama.h"
+			],
+			"type" : "file"
+		}
+	],
+	"paths" : 
+	{
+		"build" : "bitnet",
+		"source" : "/Users/anirudhmalik/Desktop/onebit/onebit-android/bitnet"
+	}
+}
