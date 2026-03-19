@@ -11,7 +11,11 @@ add_library(onebit SHARED
   onebit_jni.cpp
 )
 
-target_compile_options(onebit PRIVATE -O3 -DNDEBUG)
+if(${ANDROID_ABI} STREQUAL "arm64-v8a")
+    target_compile_options(onebit PRIVATE -O3 -DNDEBUG -march=armv8.2-a+dotprod)
+else()
+    target_compile_options(onebit PRIVATE -O3 -DNDEBUG)
+endif()
 
 target_include_directories(onebit PRIVATE
   ${ONEBIT_BITNET_DIR}/3rdparty/llama.cpp/include

@@ -225,7 +225,8 @@ Java_ai_onebit_nativeapp_OneBitNativeBridge_generate(
         const int64_t t0 = llama_time_us();
 
         std::vector<llama_token> tokens(8192);
-        const int n_prompt = llama_tokenize(model, prompt.c_str(), (int) prompt.size(), tokens.data(), (int) tokens.size(), true, true);
+        std::string chatml_prompt = "<|im_start|>user\n" + prompt + "<|im_end|>\n<|im_start|>assistant\n";
+        const int n_prompt = llama_tokenize(model, chatml_prompt.c_str(), (int) chatml_prompt.size(), tokens.data(), (int) tokens.size(), true, true);
         if (n_prompt < 0) {
             cb_error(tenv, cbGlobal, requestId, "llama_tokenize failed");
             llama_sampler_free(smpl);

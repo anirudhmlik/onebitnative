@@ -1,2 +1,3 @@
 ninja: Entering directory `/Users/anirudhmalik/Desktop/onebit/OneBitNative/app/.cxx/Debug/2343q2w2/arm64-v8a'
-ninja: no work to do.
+[1/2] Building CXX object CMakeFiles/onebit.dir/onebit_jni.cpp.o
+[2/2] Linking CXX shared library /Users/anirudhmalik/Desktop/onebit/OneBitNative/app/build/intermediates/cxx/Debug/2343q2w2/obj/arm64-v8a/libonebit.so
