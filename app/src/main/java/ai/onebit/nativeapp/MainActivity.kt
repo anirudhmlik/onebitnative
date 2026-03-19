@@ -30,6 +30,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -96,9 +97,12 @@ private fun OneBitRoot(
   var importing by remember { mutableStateOf(false) }
   var input by remember { mutableStateOf("") }
   var messages by remember { mutableStateOf(listOf<ChatMsg>(
-    ChatMsg("welcome", "assistant", "Hello! I am OneBit. How can I help you today?")
+    // Start with an empty conversation. The model will respond only to the user prompt.
+    // This avoids a fixed greeting being shown before the first user message.
+    // (If you want a greeting, the model can generate it as part of the first response.)
   )) }
   var generating by remember { mutableStateOf(false) }
+  var isModelLoaded by remember { mutableStateOf(false) }
   var tps by remember { mutableStateOf<Float?>(null) }
   val scope = rememberCoroutineScope()
   val listState = rememberLazyListState()
@@ -121,6 +125,7 @@ private fun OneBitRoot(
         try {
           OneBitNativeBridge.initBackend()
           OneBitNativeBridge.loadModel(path, 2048, 8)
+          isModelLoaded = true
           status = "BitNet Model Loaded"
         } catch (e: Exception) {
           status = "Failed to load model: ${e.message}"
@@ -184,6 +189,36 @@ private fun OneBitRoot(
           }
         },
         actions = {
+          if (modelPath != null) {
+            IconButton(onClick = {
+              scope.launch {
+                if (isModelLoaded) {
+                  withContext(Dispatchers.Default) { OneBitNativeBridge.unloadModel() }
+                  isModelLoaded = false
+                  status = "Model Unloaded from RAM"
+                  tps = null
+                } else {
+                  status = "Loading BitNet Model into Memory..."
+                  withContext(Dispatchers.Default) {
+                    try {
+                      OneBitNativeBridge.initBackend()
+                      OneBitNativeBridge.loadModel(modelPath!!, 2048, 8)
+                      isModelLoaded = true
+                      status = "BitNet Model Loaded"
+                    } catch (e: Exception) {
+                      status = "Failed to load: ${e.message}"
+                    }
+                  }
+                }
+              }
+            }) {
+              Icon(
+                Icons.Default.Clear,
+                contentDescription = "Load/Unload Model",
+                tint = if (isModelLoaded) Color(0xFF4CAF50) else Color(0xFFE53935)
+              )
+            }
+          }
           var menuExpanded by remember { mutableStateOf(false) }
           IconButton(onClick = { menuExpanded = true }) {
             Icon(Icons.Default.MoreVert, contentDescription = "Menu", tint = Color(0xFFE3E3E3))
@@ -405,7 +440,7 @@ private fun OneBitRoot(
                 callback = cb,
               )
             },
-            enabled = generating || (input.isNotBlank() && modelPath != null)
+            enabled = generating || (input.isNotBlank() && modelPath != null && isModelLoaded)
           ) {
             if (generating) {
               Icon(

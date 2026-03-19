@@ -92,9 +92,9 @@ Java_ai_onebit_nativeapp_OneBitNativeBridge_loadModel(JNIEnv * env, jclass, jstr
     cparams.n_ctx = (uint32_t) nCtx;
     cparams.n_threads = (int32_t) nThreads;
     cparams.n_threads_batch = (int32_t) nThreads;
-    cparams.flash_attn = true; // Use Flash Attention for O(N) memory scaling
-    cparams.type_k = GGML_TYPE_Q8_0; // 8-bit KV cache keys for light memory footprint
-    cparams.type_v = GGML_TYPE_Q8_0; // 8-bit KV cache values
+    cparams.flash_attn = false; // CPU fallback for Flash Attention might be exceptionally slow
+    cparams.type_k = GGML_TYPE_F16; // Standard 16-bit KV cache avoids slow on-the-fly dequantization 
+    cparams.type_v = GGML_TYPE_F16;
 
     g_ctx = llama_new_context_with_model(g_model, cparams);
     if (!g_ctx) {
@@ -228,8 +228,32 @@ Java_ai_onebit_nativeapp_OneBitNativeBridge_generate(
         const int64_t t0 = llama_time_us();
 
         std::vector<llama_token> tokens(8192);
-        std::string chatml_prompt = "<|im_start|>user\n" + prompt + "<|im_end|>\n<|im_start|>assistant\n";
-        const int n_prompt = llama_tokenize(model, chatml_prompt.c_str(), (int) chatml_prompt.size(), tokens.data(), (int) tokens.size(), true, true);
+        // Use the model's native chat template (prevents "continuation" spillover).
+        // NOTE: `add_ass=true` ends the prompt with the assistant-start tokens.
+        const llama_chat_message chat[] = {
+            {"user", prompt.c_str()},
+        };
+        const size_t promptBufSize = prompt.size() * 8 + 4096;
+        std::vector<char> promptBuf(promptBufSize);
+        const int32_t promptBytes = llama_chat_apply_template(model, /*tmpl*/ nullptr,
+                                                               chat, 1,
+                                                               /*add_ass*/ true,
+                                                               promptBuf.data(), (int32_t) promptBuf.size());
+        if (promptBytes < 0) {
+            cb_error(tenv, cbGlobal, requestId, "llama_chat_apply_template failed");
+            llama_sampler_free(smpl);
+            cleanup();
+            return;
+        }
+
+        const int n_prompt = llama_tokenize(
+            model,
+            promptBuf.data(),
+            promptBytes,
+            tokens.data(),
+            (int) tokens.size(),
+            /*add_special*/ true,
+            /*parse_special*/ true);
         if (n_prompt < 0) {
             cb_error(tenv, cbGlobal, requestId, "llama_tokenize failed");
             llama_sampler_free(smpl);
@@ -238,10 +262,21 @@ Java_ai_onebit_nativeapp_OneBitNativeBridge_generate(
         }
         tokens.resize((size_t) n_prompt);
 
-        // Evaluate prompt token-by-token for BitNet ARM TL1 limitation
-        llama_batch batch = llama_batch_init(1, 0, 1);
-        for (int i = 0; i < (int) tokens.size(); i++) {
-            batch.token[0] = tokens[i];
+        // Dispatch the entire prompt to the unblocked BitNet engine instantly
+        llama_batch batch = llama_batch_init((int32_t) tokens.size(), 0, 1);
+        batch.n_tokens = (int32_t) tokens.size();
+        for (int i = 0; i < batch.n_tokens; i++) {
+            batch.token[i] = tokens[i];
+            batch.pos[i] = i;
+            batch.n_seq_id[i] = 1;
+            batch.seq_id[i][0] = 0;
+            batch.logits[i] = (i == batch.n_tokens - 1);
+        }
+
+        if (llama_decode(g_ctx, batch) != 0) {
+            // Fallback: decode the last token only.
+            const int i = (int)tokens.size() - 1;
+            batch.token[0] = tokens[(size_t)i];
             batch.pos[0] = i;
             batch.n_seq_id[0] = 1;
             batch.seq_id[0][0] = 0;
@@ -268,15 +303,65 @@ Java_ai_onebit_nativeapp_OneBitNativeBridge_generate(
             const llama_token id = llama_sampler_sample(smpl, ctx, -1);
             llama_sampler_accept(smpl, id);
 
-            if (id == llama_token_eos(model)) {
+            // Stop on end-of-stream or end-of-turn for chat templates.
+            if (id == llama_token_eos(model) || id == llama_token_eot(model)) {
                 break;
             }
 
             char piece[256];
-            const int n = llama_token_to_piece(model, id, piece, sizeof(piece), 0, true);
-            if (n > 0) {
-                out.append(piece, piece + n);
-                cb_token(tenv, cbGlobal, requestId, std::string(piece, piece + n));
+            // Use `special=true` for stop detection, and `special=false` for user-visible output.
+            // Some chat templates emit literal template tokens like "<|user|>" / "<|assistant|>".
+            const int nSearch = llama_token_to_piece(model, id, piece, sizeof(piece), 0, true);
+            const std::string pieceSearchStr = (nSearch > 0) ? std::string(piece, piece + nSearch) : std::string();
+
+            const int nOut = llama_token_to_piece(model, id, piece, sizeof(piece), 0, false);
+            const std::string pieceOutStr = (nOut > 0) ? std::string(piece, piece + nOut) : std::string();
+
+            if (!pieceSearchStr.empty() || !pieceOutStr.empty()) {
+
+                // Stop sequences for chat-template style prompts.
+                // This prevents the model from "continuing the conversation" after the assistant response.
+                // We include both newline-prefixed and raw forms because token boundaries can drop/merge '\n'.
+                const char * stopMarkers[] = {
+                    "\nUser:", "\nAssistant:",
+                    "User:", "Assistant:",
+                    "\nResponse:", "Response:",
+                    "\nResponse", " Response",
+                    "<|user|>", "<|assistant|>",
+                    "<|endofturn|>", "<|eot|>",
+                    "<|end|>", "<|endoftext|>"
+                };
+                size_t stopPos = std::string::npos;
+                {
+                    // We only care about the earliest marker occurrence across all candidates.
+                    const std::string candidate = out + pieceSearchStr;
+                    for (const char * m : stopMarkers) {
+                        const size_t p = candidate.find(m);
+                        if (p != std::string::npos && p < stopPos) stopPos = p;
+                    }
+                }
+
+                if (stopPos != std::string::npos) {
+                    // Trim the full candidate text to the stop marker start.
+                    const std::string candidate = out + pieceSearchStr;
+                    const std::string trimmed = candidate.substr(0, stopPos);
+
+                    // Emit only the newly-added delta (if any) before the stop marker.
+                    if (trimmed.size() > out.size()) {
+                        const std::string delta = trimmed.substr(out.size());
+                        out = trimmed;
+                        cb_token(tenv, cbGlobal, requestId, delta);
+                    } else {
+                        // Stop marker started inside already-emitted `out`; just trim final output.
+                        out = trimmed;
+                    }
+                    break;
+                }
+
+                if (!pieceOutStr.empty()) {
+                    out.append(pieceOutStr);
+                    cb_token(tenv, cbGlobal, requestId, pieceOutStr);
+                }
             }
 
             // Decode next token
@@ -302,6 +387,33 @@ Java_ai_onebit_nativeapp_OneBitNativeBridge_generate(
         const int64_t t1 = llama_time_us();
         const double sec = (t1 - t0) / 1e6;
         const float tps = sec > 0 ? (float) (generated / sec) : 0.0f;
+        // Final safety trim to prevent chat-template spillover from being shown.
+        {
+            const char * stopMarkersFinal[] = {
+                "Response:", "\nResponse:",
+                "Response", "\nResponse",
+                "User:", "\nUser:",
+                "Assistant:", "\nAssistant:",
+                "<|user|>", "<|assistant|>",
+                "<|endofturn|>", "<|eot|>",
+                "<|end|>", "<|endoftext|>"
+            };
+            size_t stopPos = std::string::npos;
+            const char * matched = nullptr;
+            for (const char * m : stopMarkersFinal) {
+                const size_t p = out.find(m);
+                if (p != std::string::npos && p < stopPos) stopPos = p;
+                if (p == stopPos && p != std::string::npos) matched = m;
+            }
+            if (stopPos != std::string::npos) {
+                out.resize(stopPos);
+                if (matched) {
+                    LOGI("stop-trim: matched marker='%s' pos=%zu", matched, stopPos);
+                } else {
+                    LOGI("stop-trim: pos=%zu", stopPos);
+                }
+            }
+        }
         cb_done(tenv, cbGlobal, requestId, out, generated, tps);
 
         llama_sampler_free(smpl);
