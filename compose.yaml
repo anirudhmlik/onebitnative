@@ -1,0 +1,15 @@
+services:
+  android-builder:
+    build:
+      context: .
+      args:
+        # Set this to a git URL to clone the BitNet-optimized llama.cpp fork
+        # that the native C++ code depends on. The fork must contain:
+        #   3rdparty/llama.cpp/   (upstream llama.cpp)
+        #   src/ggml-bitnet-mad.cpp
+        #   src/ggml-bitnet-lut.cpp
+        # If you have the fork locally, clone it and set the arg:
+        #   BITNET_REPO_URL: "https://github.com/your-org/bitnet-llama-fork.git"
+        BITNET_REPO_URL: ""
+        BITNET_REPO_BRANCH: "main"
+    image: onebitnative-builder

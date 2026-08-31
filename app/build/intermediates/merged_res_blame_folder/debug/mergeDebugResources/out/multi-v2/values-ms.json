@@ -4,24 +4,7 @@
             "outputFile": "ai.onebit.nativeapp-mergeDebugResources-46:/values-ms/values-ms.xml",
             "map": [
                 {
-                    "source": "/Users/anirudhmalik/.gradle/caches/8.13/transforms/c8226aaee45f287cf7cf50731eb94972/transformed/foundation-release/res/values-ms/values-ms.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,142",
-                        "endColumns": "86,90",
-                        "endOffsets": "137,228"
-                    },
-                    "to": {
-                        "startLines": "85,86",
-                        "startColumns": "4,4",
-                        "startOffsets": "8787,8874",
-                        "endColumns": "86,90",
-                        "endOffsets": "8869,8960"
-                    }
-                },
-                {
-                    "source": "/Users/anirudhmalik/.gradle/caches/8.13/transforms/57130dd1d69ce0f0bd8cccfb55786b6e/transformed/material3-release/res/values-ms/values-ms.xml",
+                    "source": "/Users/dilip/.gradle/caches/8.13/transforms/57130dd1d69ce0f0bd8cccfb55786b6e/transformed/material3-release/res/values-ms/values-ms.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -38,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/Users/anirudhmalik/.gradle/caches/8.13/transforms/40f5983a4ea2166e39d03c75579fa48a/transformed/core-1.15.0/res/values-ms/values-ms.xml",
+                    "source": "/Users/dilip/.gradle/caches/8.13/transforms/40f5983a4ea2166e39d03c75579fa48a/transformed/core-1.15.0/res/values-ms/values-ms.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -55,7 +38,24 @@
                     }
                 },
                 {
-                    "source": "/Users/anirudhmalik/.gradle/caches/8.13/transforms/09050b6d2a405c906ff5fdc591bcc8b7/transformed/ui-release/res/values-ms/values-ms.xml",
+                    "source": "/Users/dilip/.gradle/caches/8.13/transforms/c8226aaee45f287cf7cf50731eb94972/transformed/foundation-release/res/values-ms/values-ms.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,142",
+                        "endColumns": "86,90",
+                        "endOffsets": "137,228"
+                    },
+                    "to": {
+                        "startLines": "85,86",
+                        "startColumns": "4,4",
+                        "startOffsets": "8787,8874",
+                        "endColumns": "86,90",
+                        "endOffsets": "8869,8960"
+                    }
+                },
+                {
+                    "source": "/Users/dilip/.gradle/caches/8.13/transforms/09050b6d2a405c906ff5fdc591bcc8b7/transformed/ui-release/res/values-ms/values-ms.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
